@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="https://bydsentry.com/wp-content/uploads/BYD-Sentry-Favicon.png"/>
+    <title>BYD Sentry Smart Guard Translation</title>
+
+    <!-- Style popup -->
+    <style>
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+		
+        #popup .popup-content {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 320px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+			position: relative;
+        }
+		
+        #popup .popup-content .emoji {
+			font-size: 48px;
+			margin-bottom: 10px;
+        }
+		
+        #popup .popup-content p {
+			margin-bottom: 20px;
+			font-size: 16px;
+			color: #333;
+        }
+		
+        #popup .popup-content button {
+			background-color: #0088ff;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 8px;
+			font-size: 16px;
+			cursor: pointer;
+        }
+		
+        #popup .popup-content button:hover {
+			background-color: #0066cc;
+        }
+
+        .home-button-container {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			z-index: 1000;
+			touch-action: none; /* חשוב למובייל */
+        }
+  
+        .home-button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 60px;
+			height: 60px;
+			background-color: #0088ff;
+			color: white;
+			border: none;
+			border-radius: 50%;
+			font-size: 24px;
+			text-decoration: none;
+			box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+			transition: all 0.3s ease;
+			cursor: move;
+        }
+  
+        .home-button:hover {
+			background-color: #0066cc;
+			transform: scale(1.1);
+			box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+    </style>
+
+	<!-- CSS files -->
+	<link href="static/css/chunk-vendors.4f0bdeee.css" rel="stylesheet">
+	<link href="static/css/app.380a3e9b.css" rel="stylesheet">
+
+	<!-- Fix file -->
+	<script src="direct_fix.js"></script>
+
+	<!-- Automatic redirection to translated URL -->
+	<script>
+		const translatedURL = "https://bydsentry-github-io.translate.goog/bydsmartguardtranslation/app.html?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_hist=true#/";
+		const currentURL = window.location.href;
+
+		if (!currentURL.includes("bydsentry-github-io.translate.goog")) {
+			console.log('Redirecting to translated version...');
+			window.location.href = translatedURL;
+			}
+	</script>
+
+</head>
+
+<body>
+	<!-- Styled popup with text -->
+	<div id="popup">
+		<div class="popup-content">
+			<div class="emoji">📢</div>
+			<p>
+				Welcome to the vehicle application simulation interface.<br>
+				At the top of this page, you will find Google's built-in translation feature; please use it to translate the content into your preferred language.
+			</p>
+			<button onclick="closePopup()">OK</button>
+	  </div>
+	</div>
+
+	<noscript>
+		<strong>We're sorry but SmartGuard UI doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+	</noscript>
+
+	<!-- Your app -->
+	<div id="app"></div>
+
+	<!-- Home button -->
+	<div class="home-button-container">
+	  <a href="https://bydsentry.github.io/bydsmartguardtranslation" class="home-button" id="draggableButton">
+		<span>🏠</span>
+	  </a>
+	</div>
+
+	<!-- JS files -->
+	<script src="static/js/chunk-vendors.111f4aba.js"></script>
+	<script src="static/js/app.3e303ad2.js"></script>
+
+	<!-- Script for popup management -->
+	<script>
+	  function closePopup() {
+		document.getElementById('popup').style.display = 'none';
+	  }
+
+	  window.onload = function() {
+		setTimeout(function() {
+		  closePopup();
+		}, 5000); // Automatic close after 5 seconds
+	  };
+	</script>
+
+	<!-- Script to remove Google Translate popup -->
+	<script>
+	(function() {
+	  if (window.location.hostname.includes("translate.goog")) {
+		const removePopup = () => {
+		  const popup = document.querySelector('[role="dialog"]');
+		  if (popup) {
+			popup.remove();
+			console.log("Google Translate popup removed.");
+		  }
+		};
+
+		removePopup();
+
+		const observer = new MutationObserver(() => {
+		  removePopup();
+		});
+
+		observer.observe(document.body, { childList: true, subtree: true });
+	  }
+	})();
+	</script>
+
+	<!-- Improved script for moving the button on mobile -->
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	  const button = document.getElementById('draggableButton');
+	  const container = button.parentElement;
+	  let isDragging = false;
+	  let currentX;
+	  let currentY;
+	  let initialX;
+	  let initialY;
+	  let xOffset = 0;
+	  let yOffset = 0;
+	  let hasMoved = false;
+	  let touchStartTime;
+	  let lastTapTime = 0;
+	  
+	  // Preventing default browser behaviors on mobile
+	  document.addEventListener('touchmove', function(e) {
+		if (isDragging) {
+		  e.preventDefault();
+		}
+	  }, { passive: false });
+	  
+	  document.addEventListener('touchforcechange', function(e) {
+		if (isDragging) {
+		  e.preventDefault();
+		}
+	  }, { passive: false });
+	  
+	  // Saving the button location in local storage
+	  const savedPosition = localStorage.getItem('homeButtonPosition');
+	  if (savedPosition) {
+		try {
+		  const position = JSON.parse(savedPosition);
+		  xOffset = position.x;
+		  yOffset = position.y;
+		  setTranslate(xOffset, yOffset, container);
+		} catch (e) {
+		  console.error("Error loading saved position:", e);
+		  // Reset in case of error
+		  xOffset = 0;
+		  yOffset = 0;
+		}
+	  }
+
+	  // Touch functions
+	  function dragStart(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		
+		touchStartTime = new Date().getTime();
+		hasMoved = false;
+		
+		if (e.type === "touchstart") {
+		  // Touch therapy
+		  if (e.touches.length === 1) {
+			initialX = e.touches[0].clientX - xOffset;
+			initialY = e.touches[0].clientY - yOffset;
+		  }
+		} else {
+		  // Mouse care
+		  initialX = e.clientX - xOffset;
+		  initialY = e.clientY - yOffset;
+		}
+
+		// Improved checking whether the click is on the button or on an element inside it
+		if (e.target === button || button.contains(e.target)) {
+		  isDragging = true;
+		}
+	  }
+
+	  function dragEnd(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		
+		if (!isDragging) return;
+		
+		const touchEndTime = new Date().getTime();
+		const touchDuration = touchEndTime - touchStartTime;
+		
+		// Double tap detection
+		if (!hasMoved && touchDuration < 300) {
+		  const currentTime = new Date().getTime();
+		  const tapLength = currentTime - lastTapTime;
+		  
+		  if (tapLength < 500 && tapLength > 0) {
+			// Double tap - reset button position
+			xOffset = 0;
+			yOffset = 0;
+			setTranslate(xOffset, yOffset, container);
+			localStorage.setItem('homeButtonPosition', JSON.stringify({ x: 0, y: 0 }));
+			console.log("Button position reset");
+		  } else if (!hasMoved) {
+			// Single tap - navigate to home page
+			window.location.href = button.getAttribute('href');
+		  }
+		  
+		  lastTapTime = currentTime;
+		}
+		
+		initialX = currentX;
+		initialY = currentY;
+		isDragging = false;
+		
+		// Saving the new location
+		localStorage.setItem('homeButtonPosition', JSON.stringify({
+		  x: xOffset,
+		  y: yOffset
+		}));
+	  }
+
+	  function drag(e) {
+		if (!isDragging) return;
+		
+		e.preventDefault();
+		e.stopPropagation();
+		
+		if (e.type === "touchmove") {
+		  // Touch therapy
+		  if (e.touches.length === 1) {
+			currentX = e.touches[0].clientX - initialX;
+			currentY = e.touches[0].clientY - initialY;
+		  }
+		} else {
+		  // Mouse care
+		  currentX = e.clientX - initialX;
+		  currentY = e.clientY - initialY;
+		}
+
+		// Checking if there was a significant shift
+		if (Math.abs(currentX - xOffset) > 3 || Math.abs(currentY - yOffset) > 3) {
+		  hasMoved = true;
+		}
+
+		// Limiting the button to the screen borders
+		const windowWidth = window.innerWidth;
+		const windowHeight = window.innerHeight;
+		const buttonRect = button.getBoundingClientRect();
+		
+		// Preventing screen overflow
+		if (currentX < -initialX + 10) currentX = -initialX + 10;
+		if (currentY < -initialY + 10) currentY = -initialY + 10;
+		if (currentX > windowWidth - buttonRect.width - initialX - 10) 
+		  currentX = windowWidth - buttonRect.width - initialX - 10;
+		if (currentY > windowHeight - buttonRect.height - initialY - 10) 
+		  currentY = windowHeight - buttonRect.height - initialY - 10;
+
+		xOffset = currentX;
+		yOffset = currentY;
+		
+		setTranslate(currentX, currentY, container);
+	  }
+
+	  function setTranslate(xPos, yPos, el) {
+		el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+	  }
+
+	  // Removing all existing event listeners (in case the script is reloaded)
+	  container.removeEventListener("touchstart", dragStart);
+	  container.removeEventListener("touchend", dragEnd);
+	  container.removeEventListener("touchcancel", dragEnd);
+	  container.removeEventListener("touchmove", drag);
+	  container.removeEventListener("mousedown", dragStart);
+	  container.removeEventListener("mouseup", dragEnd);
+	  container.removeEventListener("mouseleave", dragEnd);
+	  container.removeEventListener("mousemove", drag);
+	  
+	  // Adding new event listeners with passive: false for better performance
+	  container.addEventListener("touchstart", dragStart, { passive: false });
+	  container.addEventListener("touchend", dragEnd, { passive: false });
+	  container.addEventListener("touchcancel", dragEnd, { passive: false });
+	  container.addEventListener("touchmove", drag, { passive: false });
+	  container.addEventListener("mousedown", dragStart, { passive: false });
+	  container.addEventListener("mouseup", dragEnd, { passive: false });
+	  container.addEventListener("mouseleave", dragEnd, { passive: false });
+	  container.addEventListener("mousemove", drag, { passive: false });
+	  
+	  // Preventing default browser behavior
+	  button.addEventListener("click", function(e) {
+		if (hasMoved) {
+		  e.preventDefault();
+		  e.stopPropagation();
+		}
+	  });
+	});
+	</script>
+
+</body>
+</html>

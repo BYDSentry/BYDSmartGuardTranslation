@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="https://bydsentry.com/wp-content/uploads/BYD-Sentry-Favicon.png"/>
+    <title>BYD Sentry Translations</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .login-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .login-button-container img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .login-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>BYD Sentry Translations</h1>
+
+        <!-- Icon Smart Guard -->
+        <div class="login-button-container">
+            <img src="https://bydsentry.com/wp-content/uploads/BYD-Sentry-Web-Recursos-Smart-Guard-Logo.png" alt="Smart Guard Icon">
+            <button class="login-button" onclick="redirectToMagicManager()">Smart Guard</button>
+        </div>
+
+        <!-- Icon Magic Manager -->
+        <div class="login-button-container">
+            <img src="https://bydsentry.com/wp-content/uploads/BYD-Sentry-Web-Recursos-Magic-Manager-Logo.png" alt="Magic Manager Icon">
+            <button class="login-button" onclick="redirectToSmartGuard()">Magic Manager</button>
+        </div>
+
+        <!-- Icon page -->
+        <div class="login-button-container">
+            <img src="https://bydsentry.com/wp-content/uploads/BYD-Sentry-Logo.png" alt="Magic Guard Icon">
+            <button class="login-button" onclick="redirectToBYDSentry()">BYDSentry.com</button>
+        </div>
+
+        <!-- Icon telegram -->
+        <div class="login-button-container">
+            <img src="https://bydsentry.com/wp-content/uploads/BYD-Sentry-Telegram-Logo.png" alt="Telegram Group Icon">
+            <button class="login-button" onclick="redirectToTelegram()">Telegram Group</button>
+        </div>
+    </div>
+
+    <script>
+        // Link to smart guard translation
+        function redirectToSmartGuard() {
+            window.location.href = "app.html";
+        }
+
+        // Link to magic manager translation
+        function redirectToMagicManager() {
+            window.location.href = "https://bydsentry.github.io/bydmagicmanagertranslation/app.html";
+        }
+
+        // Link to page
+        function redirectToBYDSentry() {
+            window.location.href = "https://bydsentry.com";
+        }
+
+        // Link to telegram
+        function redirectToTelegram() {
+            window.open("https://t.me/BYDSentry", "_blank");
+        }
+    </script>
+</body>
+
+</html>
